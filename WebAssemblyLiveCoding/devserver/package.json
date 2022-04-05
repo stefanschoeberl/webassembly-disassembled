@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "bootstrap": "5.1.3",
+    "bootstrap-icons": "^1.8.1",
+    "ejs": "3.1.6",
+    "express": "4.17.3",
+    "wabt": "1.0.28"
+  },
+  "name": "webassembly-live-demo",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js ../examples",
+    "solutions": "node index.js ../solutions"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

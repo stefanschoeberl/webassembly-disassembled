@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/icons/bootstrap-icons.css">
+    <title>WebAssembly Live Demo</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">WebAssembly Live Demo</a>
+        </div>
+    </nav>
+    <div class="container py-3">
+        <div class="d-flex justify-content-between  mb-2">
+            <h2 class="m-0"><%= title %></h2>
+            <button type="button" class="btn btn-success" onclick="runDemo()"><i class="bi-arrow-clockwise"></i></button>
+        </div>
+        <div id="log" class="text-light bg-dark rounded-3 p-3"></div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const logDiv = document.getElementById('log');
+        function demoLog(value) {
+            const samp = document.createElement('samp');
+            samp.className = 'd-block';
+            samp.innerText = String(value);
+            logDiv.appendChild(samp);
+        }
+
+        async function loadWasmModule(name, imports) {
+            const module = WebAssembly.instantiateStreaming(fetch(name), imports);
+            return module.instance;
+        }
+    </script>
+    <script src="./main.js"></script>
+    <script>
+        function clearScript() {
+            const script = document.getElementById("mainScript")
+            if (script) {
+                script.remove();
+                delete main;
+            }
+        }
+        function loadAndRunScript() {
+            const script = document.createElement("script");
+            script.src = "./main.js";
+            script.id = "mainScript";
+            script.onload = () => {
+                main();
+            };
+            document.getElementsByTagName("body")[0].appendChild(script);
+        }
+        function runDemo() {
+            logDiv.innerHTML = '';
+            
+            clearScript();
+            loadAndRunScript();
+        }
+        runDemo();
+    </script>
+</body>
+</html>

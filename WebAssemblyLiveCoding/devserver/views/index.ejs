@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>WebAssembly Live Demo</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">WebAssembly Live Demo</a>
+        </div>
+    </nav>
+    <div class="container pt-3">
+        <h2>Demos</h2>
+        <div class="list-group">
+            <% demos.forEach((demo) => { %>
+                <a href="<%= demo.link %>" class="list-group-item list-group-item-action"><%= demo.title %></a>
+            <% }); %>
+        </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
