@@ -30,29 +30,23 @@
             samp.innerText = String(value);
             logDiv.appendChild(samp);
         }
-
-        async function loadWasmModule(name, imports) {
-            const module = WebAssembly.instantiateStreaming(fetch(name), imports);
-            return module.instance;
-        }
     </script>
-    <script src="./main.js"></script>
     <script>
         function clearScript() {
-            const script = document.getElementById("mainScript")
+            const script = document.getElementById('mainScript');
             if (script) {
                 script.remove();
                 delete main;
             }
         }
         function loadAndRunScript() {
-            const script = document.createElement("script");
-            script.src = "./main.js";
-            script.id = "mainScript";
+            const script = document.createElement('script');
+            script.src = './main.js';
+            script.id = 'mainScript';
             script.onload = () => {
                 main();
             };
-            document.getElementsByTagName("body")[0].appendChild(script);
+            document.getElementsByTagName('body')[0].appendChild(script);
         }
         function runDemo() {
             logDiv.innerHTML = '';
