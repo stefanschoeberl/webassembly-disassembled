@@ -14,7 +14,7 @@
         </div>
     </nav>
     <div class="container py-3">
-        <div class="d-flex justify-content-between  mb-2">
+        <div class="d-flex align-items-center justify-content-between mb-2">
             <h2 class="m-0"><%= title %></h2>
             <button type="button" class="btn btn-success" onclick="runDemo()"><i class="bi-arrow-clockwise"></i></button>
         </div>
@@ -30,8 +30,12 @@
             samp.innerText = String(value);
             logDiv.appendChild(samp);
         }
-    </script>
-    <script>
+
+        function getCurrentTime() {
+            const date = new Date();
+            return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;
+        }
+
         function clearScript() {
             const script = document.getElementById('mainScript');
             if (script) {
@@ -39,21 +43,25 @@
                 delete main;
             }
         }
+
         function loadAndRunScript() {
+            logDiv.innerHTML = '';
             const script = document.createElement('script');
             script.src = './main.js';
             script.id = 'mainScript';
+            demoLog(`Start ${getCurrentTime()}`);
             script.onload = () => {
+                demoLog('--------------');
                 main();
             };
             document.getElementsByTagName('body')[0].appendChild(script);
         }
+
         function runDemo() {
-            logDiv.innerHTML = '';
-            
             clearScript();
             loadAndRunScript();
         }
+
         runDemo();
     </script>
 </body>
