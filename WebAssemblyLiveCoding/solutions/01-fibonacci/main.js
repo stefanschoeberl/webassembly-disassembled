@@ -4,7 +4,7 @@ async function main() {
     const module = await WebAssembly.instantiateStreaming(
         fetch('./main.wasm'), imports);
     const instance = module.instance;
-    for (let i = 0; i < 10; i++) {
-        demoLog(instance.exports.fib(i));
+    for (let n = 0; n < 10; n++) {
+        demoLog(instance.exports.fib(n));
     }
 }
