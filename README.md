@@ -1,4 +1,4 @@
-# WebAssembly: Bare Metal
+# WebAssembly: Disassembled
 
 ## Run solutions
 ```bash
